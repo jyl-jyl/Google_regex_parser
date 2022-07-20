@@ -29,6 +29,7 @@ pip install -r requirements.txt
 	 - line 20's class name with block's class name
 	 - line 23's class name with info's class name
 	 - line 26's class name with title's class name
+	 
 	Google's search result is dynamically generated for each user-agent, so class names vary for different machine (device, browser, etc.)
 
 6. Run the code, and the exported file is named 'list_parser.csv'
