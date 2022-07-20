@@ -25,10 +25,21 @@ class regexParser:
 			if email:
 				title = b.find(attrs={"class": "LC20lb MBeuO DKV0Md"}).get_text()
 				title = title.split('-')
+				print(title)
 
-				name = title[0].strip()
-				pos = title[1].strip()
-				company = title[2].split('|')[0].strip()
+				if len(title) >= 1:
+					name = title[0].strip()
+				else: 
+					name = ''
+				if len(title) >= 2:
+					pos = title[1].strip()
+				else:
+					pos = ''
+
+				if len(title) >= 3:
+					company = title[2].split('|')[0].strip()
+				else:
+					company = ''
 
 				name_pos_company = {
 					'name': name,
@@ -42,8 +53,8 @@ class regexParser:
 
 	def save_json_to_csv(self, name_pos_companys, filename_csv):
 		df = pd.DataFrame(name_pos_companys)
-		# df.to_csv(filename_csv)
-		df.to_csv(filename_csv, mode='a', index=True, header=False)
+		df.to_csv(filename_csv)
+		# df.to_csv(filename_csv, mode='a', index=True, header=False)
 
 	def run(self, filename, filename_csv):
 		html = self.load_html(filename)
